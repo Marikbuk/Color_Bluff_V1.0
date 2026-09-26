@@ -280,8 +280,9 @@ function guess(i){
       {html:`<div class="c h">× FALSCH</div>`},
       {html:`<div class="c center hero">${E(S.target)} lag falsch.</div>`},
       {html:`<div class="c center"><b>${E(S.target)}</b> trinkt 1 Schluck.</div>`},
-      {html:`<div class="c center muted">Die echte Farbe von ${E(S.actor)} bleibt geheim.</div>`}
-    ]),'=GUESS_WRONG()','HIDDEN');
+      {html:`<div class="c center"><b>${E(S.actor)}</b> war <span style="color:${real.c};font-weight:900">● ${real.n}</span>.</div>`},
+      {html:`<div class="c center muted">${E(S.actor)} behält diese Farbe, solange sie nicht richtig erraten wird.</div>`}
+    ]),'=GUESS_WRONG()','REVEAL');
     app.innerHTML += `<div class="actions"><button type="button" class="btn green" onclick="nextQuestion()">NÄCHSTE FRAGE</button></div>`;
   }
 }
