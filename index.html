@@ -87,7 +87,7 @@ let S={players:[],colors:{},round:1,total:4,questionsPerRound:5,question:0,cats:
 const E=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 function shell(body,formula='=COLOR_BLUFF()',status='WORKBOOK 02'){app.innerHTML=`<div class="top"><div class="logo">COLOR BLUFF</div><div class="formula">fx&nbsp;&nbsp;${formula}</div><div class="status">${status}</div></div>${body}`}
 function rows(items){return `<div class="sheetFrame"><div class="corner"></div><div class="colLetters">${['A','B','C','D','E','F','G','H'].map(x=>`<span>${x}</span>`).join('')}</div><div class="sheet">${items.map((x,i)=>`<div class="r"><div class="rn">${i+1}</div><div class="cells ${x.cls||''}">${x.html}</div></div>`).join('')}</div></div>`}
-function setup(){let cats=Object.keys(BANK);shell(rows([{html:`<div class="c h">NEUE PARTIE · V2.16</div>`},{html:`<div class="c hero">Geheime Farbe.<br>Öffentliche Diskussion.<br><span class="muted">Niemand darf dich lesen.</span></div>`},{cls:'grid2',html:`<div class="c"><b>SPIELER</b><div class="playerTable"><div class="playerRow"><div class="playerNum">1</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 1"></div><div class="playerRow"><div class="playerNum">2</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 2"></div><div class="playerRow"><div class="playerNum">3</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 3"></div><div class="playerRow"><div class="playerNum">4</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 4"></div><div class="playerRow"><div class="playerNum">5</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 5"></div><div class="playerRow"><div class="playerNum">6</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 6"></div><div class="playerRow"><div class="playerNum">7</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 7"></div><div class="playerRow"><div class="playerNum">8</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 8"></div><div class="playerRow"><div class="playerNum">9</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 9"></div><div class="playerRow"><div class="playerNum">10</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 10"></div><div class="playerRow"><div class="playerNum">11</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 11"></div><div class="playerRow"><div class="playerNum">12</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 12"></div></div></div><div class="c"><b>PARTIE</b><div style="margin-top:10px">Runden</div><select id="rounds"><option>4</option><option selected>5</option><option>6</option><option>8</option><option>10</option><option>12</option></select><div style="margin-top:14px">Fragen pro Runde</div><select id="questionsPerRound"><option>3</option><option selected>5</option><option>6</option><option>8</option></select><div class="small muted" style="margin-top:6px">BAR-MODUS: 5 × 5 = 25 Diskussionen · ideal für 5–6 Leute.</div><div style="margin-top:14px">Kategorien</div>${cats.map((c,i)=>`<label style="display:block;padding:5px 0"><input type="checkbox" class="cat" value="${E(c)}" checked> ${E(c)}</label>`).join('')}</div>`}]),'<NEW_GAME>','SETUP');app.innerHTML+=`<div class="actions"><button class="btn green" onclick="start()">PARTIE STARTEN</button></div>`;
+function setup(){let cats=Object.keys(BANK);shell(rows([{html:`<div class="c h">NEUE PARTIE · V2.17</div>`},{html:`<div class="c hero">Geheime Farbe.<br>Öffentliche Diskussion.<br><span class="muted">Niemand darf dich lesen.</span></div>`},{cls:'grid2',html:`<div class="c"><b>SPIELER</b><div class="playerTable"><div class="playerRow"><div class="playerNum">1</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 1"></div><div class="playerRow"><div class="playerNum">2</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 2"></div><div class="playerRow"><div class="playerNum">3</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 3"></div><div class="playerRow"><div class="playerNum">4</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 4"></div><div class="playerRow"><div class="playerNum">5</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 5"></div><div class="playerRow"><div class="playerNum">6</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 6"></div><div class="playerRow"><div class="playerNum">7</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 7"></div><div class="playerRow"><div class="playerNum">8</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 8"></div><div class="playerRow"><div class="playerNum">9</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 9"></div><div class="playerRow"><div class="playerNum">10</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 10"></div><div class="playerRow"><div class="playerNum">11</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 11"></div><div class="playerRow"><div class="playerNum">12</div><input class="playerName" maxlength="24" autocomplete="off" aria-label="Spieler 12"></div></div></div><div class="c"><b>PARTIE</b><div style="margin-top:10px">Runden</div><select id="rounds"><option>4</option><option selected>5</option><option>6</option><option>8</option><option>10</option><option>12</option></select><div style="margin-top:14px">Fragen pro Runde</div><select id="questionsPerRound"><option>3</option><option selected>5</option><option>6</option><option>8</option></select><div class="small muted" style="margin-top:6px">BAR-MODUS: 5 × 5 = 25 Diskussionen · ideal für 5–6 Leute.</div><div style="margin-top:14px">Kategorien</div>${cats.map((c,i)=>`<label style="display:block;padding:5px 0"><input type="checkbox" class="cat" value="${E(c)}" checked> ${E(c)}</label>`).join('')}</div>`}]),'<NEW_GAME>','SETUP');app.innerHTML+=`<div class="actions"><button class="btn green" onclick="start()">PARTIE STARTEN</button></div>`;
 const playerColors=[
   '#2563eb', // Blau
   '#dc2626', // Rot
@@ -255,15 +255,26 @@ function skipGuess(){
   app.innerHTML+=`<div class="actions"><button type="button" class="btn green" onclick="nextQuestion()">WEITER</button></div>`;
 }
 function guess(i){
-  let correct=i===S.colors[S.actor], real=COLORS[S.colors[S.actor]];
-  S.guesses.push({a:S.target,b:S.actor,i,correct,round:S.round});
-  if(correct)S.scores[S.target]++;
+  const oldIndex = S.colors[S.actor];
+  const correct = i === oldIndex;
+  const real = COLORS[oldIndex];
+  S.guesses.push({a:S.target,b:S.actor,i,correct,round:S.round,question:S.question});
+  if(correct) S.scores[S.target]++;
+
   if(correct){
+    // Once a color is correctly exposed, immediately replace it with a DIFFERENT secret color.
+    const choices = [0,1,2,3].filter(x => x !== oldIndex);
+    const newIndex = choices[Math.floor(Math.random()*choices.length)];
+    S.colors[S.actor] = newIndex;
+
     shell(rows([
       {html:`<div class="c h">✓ RICHTIG</div>`},
       {html:`<div class="c center hero">${E(S.target)} hat richtig geraten.</div>`},
-      {html:`<div class="c center"><b>${E(S.actor)}</b> ist <span style="color:${real.c};font-weight:900">● ${real.n}</span>.<br><br><b>${E(S.target)}</b> darf 1 Schluck verteilen.</div>`}
+      {html:`<div class="c center"><b>${E(S.actor)}</b> war <span style="color:${real.c};font-weight:900">● ${real.n}</span>.<br><br><b>${E(S.target)}</b> darf 1 Schluck verteilen.</div>`},
+      {html:`<div class="c center muted">${E(S.actor)} bekommt ab jetzt eine neue geheime Farbe, damit die Person weiter mitspielen kann.</div>`}
     ]),'=GUESS_CORRECT()','RESULT');
+
+    app.innerHTML += `<div class="actions"><button type="button" class="btn green" onclick="showReplacementColor()">NEUE FARBE NUR ${E(S.actor).toUpperCase()} ZEIGEN</button></div>`;
   }else{
     shell(rows([
       {html:`<div class="c h">× FALSCH</div>`},
@@ -271,9 +282,37 @@ function guess(i){
       {html:`<div class="c center"><b>${E(S.target)}</b> trinkt 1 Schluck.</div>`},
       {html:`<div class="c center muted">Die echte Farbe von ${E(S.actor)} bleibt geheim.</div>`}
     ]),'=GUESS_WRONG()','HIDDEN');
+    app.innerHTML += `<div class="actions"><button type="button" class="btn green" onclick="nextQuestion()">NÄCHSTE FRAGE</button></div>`;
   }
-  app.innerHTML+=`<div class="actions"><button type="button" class="btn green" onclick="nextQuestion()">NÄCHSTE FRAGE</button></div>`;
 }
+
+function showReplacementColor(){
+  shell(rows([
+    {html:`<div class="c h">NEUE GEHEIME FARBE</div>`},
+    {html:`<div class="c center hero">📱 HANDY JETZT NUR AN<br>${E(S.actor).toUpperCase()} GEBEN</div>`},
+    {html:`<div class="c center muted">Die neue Farbe darf niemand sonst sehen.</div>`}
+  ]),'=NEW_COLOR_HANDOFF()','SECRET');
+  app.innerHTML += `<div class="actions"><button type="button" class="btn green" onclick="revealReplacementColor()">ICH BIN ${E(S.actor).toUpperCase()} · NEUE FARBE ANZEIGEN</button></div>`;
+}
+
+function revealReplacementColor(){
+  const ci = S.colors[S.actor], c = COLORS[ci];
+  const roleNames = ['DAFÜR','DAGEGEN','EHRLICH','BLUFF'];
+  const roleHints = [
+    'Bei deiner nächsten Aufgabe vertrittst du die Dafür-Seite.',
+    'Bei deiner nächsten Aufgabe vertrittst du die Dagegen-Seite.',
+    'Freie Wahl – antworte eher ehrlich.',
+    'Freie Wahl – bluffe eher.'
+  ];
+  shell(rows([
+    {html:`<div class="c h">NUR FÜR ${E(S.actor).toUpperCase()}</div>`},
+    {html:`<div class="c center hero" style="color:${c.c}">● ${c.n}<br><span style="font-size:.45em">${roleNames[ci]}</span></div>`},
+    {html:`<div class="c center">${roleHints[ci]}</div>`},
+    {html:`<div class="c center muted">Merken und wieder geheim halten.</div>`}
+  ]),'=NEW_SECRET_COLOR()','SECRET');
+  app.innerHTML += `<div class="actions"><button type="button" class="btn green" onclick="nextQuestion()">VERBERGEN & NÄCHSTE FRAGE</button></div>`;
+}
+
 function finalGuessStart(){S.finalIndex=0;S.finalAnswers={};finalGuessPerson()}
 function finalGuessPerson(){if(S.finalIndex>=S.players.length)return finale();let p=S.players[S.finalIndex];S.finalAnswers[p]={};let targets=S.players.filter(x=>x!==p);S.finalTargets=targets;S.finalTargetIndex=0;finalGuessTarget()}
 function finalGuessTarget(){let p=S.players[S.finalIndex];if(S.finalTargetIndex>=S.finalTargets.length){S.finalIndex++;return finalGuessPerson()}let t=S.finalTargets[S.finalTargetIndex];shell(rows([{html:`<div class="c h">FINALE · ${E(p).toUpperCase()}</div>`},{html:`<div class="c center hero">Welche Farbe hat<br>${E(t)}?</div>`},{html:`<div class="c center muted">Diese finale Zuordnung bleibt bis zur Auflösung geheim.</div>`}]),'=FINAL_GUESS()','PRIVATE');app.innerHTML+=`<div class="guessGrid">${COLORS.map((c,i)=>`<button class="guess" style="background:${c.c};color:${i===3?'#111':'white'}" onclick="finalPick(${i})">${c.n}</button>`).join('')}</div>`}
