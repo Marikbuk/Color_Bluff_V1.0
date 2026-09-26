@@ -234,7 +234,7 @@ function guess(i){
       {html:`<div class="c center muted">Die echte Farbe von ${E(S.actor)} bleibt geheim.</div>`}
     ]),'=GUESS_WRONG()','HIDDEN');
   }
-  app.innerHTML+=`<div class="actions"><button class="btn green" onclick="nextRound()">NÄCHSTE FRAGE</button></div>`;
+  app.innerHTML+=`<div class="actions"><button class="btn green" onclick="nextQuestion()">NÄCHSTE FRAGE</button></div>`;
 }
 function finalGuessStart(){S.finalIndex=0;S.finalAnswers={};finalGuessPerson()}
 function finalGuessPerson(){if(S.finalIndex>=S.players.length)return finale();let p=S.players[S.finalIndex];S.finalAnswers[p]={};let targets=S.players.filter(x=>x!==p);S.finalTargets=targets;S.finalTargetIndex=0;finalGuessTarget()}
